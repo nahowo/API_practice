@@ -1,0 +1,29 @@
+<h1> 네이버 쇼핑 검색 API</h1>
+
+<form class="d-flex" action="{% url 'movie:api_book_search' %}" method="GET">
+    {% csrf_token %}
+    <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">🔍</button>
+</form>
+<div class="body">
+    {% for item in items %}
+    <div class="content">
+        <div class="sub">
+            <h2>{{item.title|safe}}</h2><br>
+            <a href="{{item.link}}"><img src={{item.image}} alt="" width="110" height="150"></a>
+            <br>{{item.lprice}}~{{item.hprice}}<br>
+            {{item.mallName}}<br>
+            {{item.productType}} {{item.brand}} {{item.category1}}
+            <br>
+            {{item.author}}<br><br>
+            {{item.price}}<br><br>
+            <details>
+                <summary>Details</summary>
+                {{item.description|safe}}
+            </details><br>
+            <p class="light">{{item.publisher}}</p>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br>
