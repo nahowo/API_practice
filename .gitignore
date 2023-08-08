@@ -160,4 +160,6 @@ cython_debug/
 #.idea/
 
 mymovie/config.json
+mymovie/config2.json
+mymovie/config3.json
 migrations/

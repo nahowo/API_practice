@@ -1,0 +1,26 @@
+<h1> 복지/혜택 API</h1>
+
+<form class="d-flex" action="{% url 'service:api_service_search' %}" method="GET">
+    {% csrf_token %}
+    <input name="q" class="form-control me-2" type="search" placeholder="search in naver" aria-label="Search">
+    <button class="btn btn-outline-success" type="submit">🔍</button>
+</form>
+<div class="body">
+    {% for data in datas %}
+    <div class="container">
+        <div class="sub">
+            <h2>분야: {{data.서비스분야}}</h2><br>
+            <a href="{{data.상세조회URL}}">상세정보 조회(외부 페이지)</a>
+            <br>
+            신청기한: {{data.신청기한}}<br><br>
+            {{data.선정기준}}<br><br>
+            <details>
+                <summary>서비스 목적</summary>
+                {{data.서비스목적요약}}
+            </details><br>
+            신청방법: {{data.신청방법}}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<br>
